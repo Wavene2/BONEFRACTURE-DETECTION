@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bone Fracture Detection using AI-based medical technology. Fast and accurate diagnosis for better treatment.">
+    <title>Bone Fracture Detection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/static/images/ty.jpg') no-repeat center center / cover;
+            z-index: -1;
+        }
+
+        header {
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 32, 128, 0.8);
+            z-index: 10;
+        }
+
+        nav a {
+            color: white;
+            padding: 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #0033a0;
+        }
+
+        .section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.5s forwards;
+            animation-delay: 0.5s;
+        }
+
+        .cta {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1rem 2rem;
+            background-color: #0044cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 2s forwards;
+            animation-delay: 1s;
+        }
+
+        .cta:hover {
+            background-color: #0033a0;
+        }
+
+        .content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0);
+            position: relative;
+            z-index: 1;
+        }
+
+        .icon-buttons {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        #fileLabel {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #fileLabel:hover {
+            background-color: #0056b3;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #002080;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <header>
+        <h1>Bone Fracture Detection</h1>
+        <p>AI-Based Technology for Fast & Accurate Diagnosis</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#center">Detection</a>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section hero">
+        <h1>Detect Bone Fractures with AI Precision</h1>
+        <p>Get instant analysis and improved treatment plans!</p>
+        <a href="#center" class="cta">Start Detection</a>
+    </section>
+
+    <!-- Detection Section -->
+    <section id="center" class="section content">
+        <h2>Bone Fracture Detection</h2>
+        <p>Upload an X-ray image to detect bone fractures.</p>
+
+        <!-- Form to submit image -->
+        <form id="uploadForm" action="/predict" method="POST" enctype="multipart/form-data">
+            <div class="icon-buttons">
+                <label for="imageUpload" id="fileLabel">
+                    <i class="fas fa-folder-open"></i> Browse
+                </label>
+                <input type="file" name="file" id="imageUpload" accept="image/*">
+                <button type="submit">
+                    <i class="fas fa-search"></i> Detect
+                </button>
+            </div>
+        </form>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Bone Fracture Detection. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const imageUpload = document.getElementById('imageUpload');
+        const fileLabel = document.getElementById('fileLabel');
+
+        imageUpload.addEventListener('change', (e) => {
+            const fileName = e.target.files[0].name;
+            fileLabel.textContent = `Selected: ${fileName}`;
+        });
+    </script>
+
+</body>
+</html>
