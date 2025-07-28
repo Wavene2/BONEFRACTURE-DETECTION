@@ -7,8 +7,8 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
-# Load YOLOv8 model
-model = YOLO(r"sriram\bone\best (2) (1).pt")  # Replace with correct path if needed
+
+model = YOLO(r"sriram\bone\best (2) (1).pt")  
 
 UPLOAD_FOLDER = r"sriram\bone\static\uploads"
 RESULT_FOLDER = r"sriram\bone\static\results"
@@ -43,7 +43,7 @@ def predict():
 
     results = model.predict(transformed_image, conf=0.25)
 
-    # Save prediction results
+   
     result_image_filenames = []
     for i, result in enumerate(results):
         im_array = result.plot()
